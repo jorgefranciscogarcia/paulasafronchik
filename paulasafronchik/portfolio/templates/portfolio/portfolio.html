@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% block title %} portfolio {% endblock %}
+
+{% block image-header %} home {% endblock %}
+
+{% block title-header %}
+<div>
+    <h1 class="display-4 fw-bold">Paula Safronchik</h1>
+</div>
+<div>
+    <h3 class="fs-2">Diseñadora textil y estilista</h3>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+{% comment %} #ESTO ESTABA CODEADO, AHORA LO PRUEBO SIN CODEAR {% block content %}
+
+{% load static %} {% endcomment %}
+
+{% for project in projects %}
+
+<!-- Proyecto -->
+<div class="row project mb-5">
+    <div class="col-lg-3 col-md-4 offset-lg-1">
+        <img class="img-fluid" src="{{ project.image.url }}" alt="">
+    </div>
+<div class="col-lg-7 col-md-8">
+        <h2 class="section-heading title">{{ project.title }}</h2>
+    <p>{{ project.description }}</p>
+    <p><a href="{{ project.link }}">Más información</a></p>
+    </div>
+</div>
+
+{% comment %} 
+# si no tenemos un link o el link no funciona podemos hacer:
+# {% if project.link %}
+# <p><a href="{{ project.link }}">Más información</a></p>
+# {% else %}
+#     <p>En desarrollo...</p>
+# {% endif %}
+# </div>
+# </div> 
+{% endcomment %}
+
+{% endfor %}
+
+{% endblock %}
